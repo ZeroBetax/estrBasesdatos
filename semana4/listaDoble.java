@@ -1,0 +1,61 @@
+package semana4;
+
+import javax.swing.JOptionPane;
+
+public class listaDoble {
+    
+    public static void main(String[] args) {
+        
+        funciones fun = new funciones();
+
+        while (true) {
+            int miMenu = Integer.parseInt(JOptionPane.showInputDialog("Menu. /n /n")
+            +"1. Agregar un elemento /n"
+            +"2. Imprimir los Elementos de la lista de Inicio Fin /n"
+            +"3. Imprimir los Elementos de la lista de Fin a Inicio /n"
+            +"4. Buscar un Elemento de Inicio a Fin /n"
+            +"5. Buscar un Elemento de Fin a Inicio /n"
+            +"6. Agregar Inicio /n"
+            +"7. Agregar Despues de un Elemento /n"
+            +"8. Modificar Registro /n"
+            +"9. Eliminar Registro /n"
+            +"Otra tecla para salir /n");
+        
+        switch (miMenu) {
+            case 1:
+                
+                String nombre = JOptionPane.showInputDialog("Ingrese su nombre:");
+                int cedula = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su cedula:"));
+
+                nodo aux = new nodo();
+                aux.nombre = nombre;
+                aux.cedula = cedula;
+                fun.agregar(aux);
+                //Estructura de datos del nodo
+                break;
+
+            case 2:
+                fun.imprimiriniciofin();
+                break;
+
+            case 3:
+                fun.imprimirfininicio();
+                break;
+            
+            case 4:
+                int cedulaBuscar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cedula a buscar:"));
+                fun.buscariniciofin(cedulaBuscar);
+                break;
+            
+            case 5:
+                int cedulaBuscar2 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cedula a buscar:"));
+                fun.buscarfinicio(cedulaBuscar2);
+                break;
+
+            case 6:
+        }
+            
+        }
+
+    }
+}
