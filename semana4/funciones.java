@@ -84,5 +84,43 @@ public class funciones {
         }
         JOptionPane.showMessageDialog(null, "Elemento no encontrado");
     }
+    public void agregarinicio(nodo elemento){
+        nodo aux = new nodo();
+        aux = elemento;
+
+        if (inicio == null){
+            inicio = aux;
+            inicio.siguiente = null;
+            inicio.anterior = null;
+            fin = inicio;
+
+            JOptionPane.showMessageDialog(null, "Elemento agregado a la lista: " + aux.nombre + " con cedula: " + aux.cedula);
+        }
+        else{
+            aux.siguiente = inicio; //el siguiente del nuevo nodo es el inicio actual
+            inicio.anterior = aux; //el anterior del inicio actual es el nuevo nodo
+            aux.anterior = null; //el anterior del nuevo nodo es null
+            //actualizar el inicio de la lista
+            inicio = aux;
+
+            JOptionPane.showMessageDialog(null, "Elemento agregado a la lista: " + aux.nombre + " con cedula: " + aux.cedula);
+        }
+    }
+    public void modificarregistro(int cedulamodificar, int cedulanueva, String nombre){
+        nodo aux = inicio;
+
+        //recorrer la lista hasta encontrar el elemento o llegar al final
+        while (aux != null){
+            //comparar la cedula del nodo actual con la cedula buscada
+            if (aux.cedula == cedulamodificar){
+                aux.cedula = cedulanueva;
+                aux.nombre = nombre;
+                JOptionPane.showMessageDialog(null, "Registro modificado: " + aux.nombre + " con cedula: " + aux.cedula);
+                return;
+            }
+            aux = aux.siguiente;
+        }
+        JOptionPane.showMessageDialog(null, "Elemento no encontrado");
+    }   
 
 }
