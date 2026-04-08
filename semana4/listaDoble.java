@@ -63,6 +63,15 @@ public class listaDoble {
                 break;
 
             case 7:
+                String nombre3 = JOptionPane.showInputDialog("Ingrese su nombre:");
+                int cedula3 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su cedula:"));
+                int cedulaReferencia = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cedula del elemento después del cual desea agregar:"));
+
+                nodo aux3 = new nodo();
+                aux3.nombre = nombre3;
+                aux3.cedula = cedula3;
+                fun.agregardespues(aux3, cedulaReferencia);
+
                 break;
 
             case 8:
@@ -71,6 +80,10 @@ public class listaDoble {
                 String nombrenuevo = JOptionPane.showInputDialog("Ingrese el nuevo nombre:");
                 fun.modificarregistro(cedulaModificar, cedulanueva, nombrenuevo);
                 break;
+            
+            case 9:
+                int cedulaEliminar = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la cedula del registro a eliminar:"));
+                fun.eliminarregistro(cedulaEliminar);
 
         }
             

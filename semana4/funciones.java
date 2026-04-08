@@ -123,4 +123,75 @@ public class funciones {
         JOptionPane.showMessageDialog(null, "Elemento no encontrado");
     }   
 
+    public void agregardespues(nodo elemento, int cedulareferencia){
+        if(inicio == null){
+            nodo auxag = new nodo();
+            inicio = auxag;
+            inicio.siguiente = null;
+            inicio.anterior = null;
+            fin = inicio;
+            JOptionPane.showMessageDialog(null, "Elemento agregado a la lista: " + auxag.nombre + " con cedula: " + auxag.cedula);
+        }
+        else{
+            nodo aux = inicio;
+            //recorrer la lista hasta encontrar el elemento o llegar al final
+            while (aux != null){
+                //comparar la cedula del nodo actual con la cedula buscada
+                if (aux.cedula == cedulareferencia){
+                    if(aux.siguiente == null){
+                        nodo auxag1 = new nodo();
+                        auxag1 = elemento;
+                        fin.siguiente = auxag1;
+                        auxag1.anterior = fin;
+                        auxag1.siguiente = null;
+                        fin = auxag1;
+                        JOptionPane.showMessageDialog(null, "Elemento agregado a la lista: " + auxag1.nombre + " con cedula: " + auxag1.cedula);
+                    }else{
+                        nodo aux2 = elemento;
+                        nodo aux3 = aux;
+                        nodo aux4 = aux.siguiente;
+                        aux4.anterior = aux2;
+                        aux2.anterior = aux3;
+                        aux2.siguiente = aux4;
+                        aux3.siguiente = aux2;
+                        JOptionPane.showMessageDialog(null, "Elemento agregado a la lista: " + aux2.nombre + " con cedula: " + aux2.cedula);
+                        }
+                }
+                aux = aux.siguiente;
+            }
+        }
+    }
+    public void eliminarregistro(int cedulaeliminar){
+        nodo aux = inicio;
+
+        //recorrer la lista hasta encontrar el elemento o llegar al final
+        while (aux != null){
+            //comparar la cedula del nodo actual con la cedula buscada
+            if (aux.cedula == cedulaeliminar){
+                //si el nodo a eliminar es el inicio
+                if (aux == inicio){
+                    inicio = aux.siguiente; //actualizar el inicio de la lista
+                    if (inicio != null){
+                        inicio.anterior = null; //el anterior del nuevo inicio es null
+                    }
+                }
+                //si el nodo a eliminar es el fin
+                else if (aux == fin){
+                    fin = aux.anterior; //actualizar el fin de la lista
+                    if (fin != null){
+                        fin.siguiente = null; //el siguiente del nuevo fin es null
+                    }
+                }
+                //si el nodo a eliminar está en medio
+                else{
+                    aux.anterior.siguiente = aux.siguiente; //el siguiente del anterior del nodo a eliminar es el siguiente del nodo a eliminar
+                    aux.siguiente.anterior = aux.anterior; //el anterior del siguiente del nodo a eliminar es el anterior del nodo a eliminar
+                }
+                JOptionPane.showMessageDialog(null, "Registro eliminado: " + aux.nombre + " con cedula: " + aux.cedula);
+                return;
+            }
+            aux = aux.siguiente;
+        }
+        JOptionPane.showMessageDialog(null, "Elemento no encontrado");
+    }
 }
